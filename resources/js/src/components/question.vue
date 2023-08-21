@@ -21,7 +21,8 @@
          'answer' : {
              required: true,
              type : String
-         }},
+         },
+     },
 
      data(){
          return {
