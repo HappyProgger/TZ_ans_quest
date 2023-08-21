@@ -5,8 +5,14 @@
         <div class="content">
             <p class="main_text" >Ответы на вопросы</p>
 
-            <div  v-for="post in posts" :key="post.answer">
-                <questions_component :answer="post.question" :main_question="post.answer"></questions_component>
+            <div  v-for="post in posts" :key="post.answer" >
+                <questions_component
+                    :answer="post.question"
+                    :main_question="post.answer"
+                    :post_margin_top = 'admin_margin_top'
+                    :post_margin_buttom="admin_margin_bottom">
+
+                </questions_component>
 
             </div>
 
@@ -28,6 +34,8 @@ export default {
     components: {questions_component},
     data() {
         return {
+            admin_margin_top:window.localStorage.getItem('post_margin_top'),
+            admin_margin_bottom: window.localStorage.getItem('post_margin_buttom'),
             posts: []
         }
     },

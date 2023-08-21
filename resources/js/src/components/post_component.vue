@@ -25,6 +25,7 @@ export default {
             required: true,
             type: String
         },
+
         'answer' : {
             required: true,
             type : String
@@ -46,9 +47,6 @@ export default {
 
 <style>
 
-.header__post__button_content{
-    background-color: white;
-}
 
 .header_post{
     max-width: 600px;
@@ -61,6 +59,7 @@ export default {
     margin-bottom: 2vh;
     border-radius: 10px;
     padding: 5px 10px;
+
 
 }
 .answer{
@@ -79,7 +78,7 @@ export default {
 .part{
 //min-height: 250px;
     width: inherit;
-    margin-bottom: 3vh;
+    //margin-bottom: 3vh;
 }
 .nonvisible{
     display: none;

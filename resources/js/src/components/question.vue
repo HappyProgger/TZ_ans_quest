@@ -1,5 +1,5 @@
 <template>
-    <div class="part">
+    <div class="part" :style="{ 'margin-top': post_margin_top + 'px' , 'margin-bottom' : post_margin_buttom + 'px' }" >
         <div class="header">{{ main_question }}<button @click="is_open_arrow_active ? this.is_open_arrow_active = false :this.is_open_arrow_active = true"
                                                      :class="is_open_arrow_active ? 'open_arrow_none_active':'open_arrow_active' "></button></div>
 
@@ -14,6 +14,14 @@
  export default {
      name : "questions_component",
      props :  {
+         'post_margin_top' : {
+             required: true,
+             type: String
+         },
+         'post_margin_buttom' : {
+             required: true,
+             type: String
+         },
          'main_question' : {
              required: true,
              type: String

@@ -47,41 +47,41 @@
                     <div class="buttons_option">
                         <div class="button">
                             <input type="radio" id="radio-1" name="radio_margin_top" class="buttons_option_button_margin_top">
-                            <label  for="radio-1" class="fake_chekbox"  @click="admin_margin_top = 5" >
+                            <label  for="radio-1" class="fake_chekbox"  @click="set_Item_localStore('post_margin_top', '30')" >
 
                             </label>
                             <p class="value_of_button">
-                                 5px
+                                 30px
                             </p>
 
                         </div>
                         <div class="button">
                             <input type="radio"  id="radio-2"  name="radio_margin_top" class="buttons_option_button_margin_top">
-                            <label  for="radio-2" class="fake_chekbox"  @click="admin_margin_top = 25">
+                            <label  for="radio-2" class="fake_chekbox"  @click="set_Item_localStore('post_margin_top', '50')">
 
                             </label>
                             <p class="value_of_button">
-                                25px
+                                50px
                             </p>
 
                         </div>
                         <div class="button">
                             <input type="radio" id="radio-3" name="radio_margin_top" class="buttons_option_button_margin_top">
-                            <label class="fake_chekbox" for="radio-3"  @click="admin_margin_top = 35">
+                            <label class="fake_chekbox" for="radio-3"  @click="set_Item_localStore('post_margin_top', '100')">
 
                             </label>
                             <p class="value_of_button">
-                                35px
+                                100px
                             </p>
 
                         </div>
                         <div class="button">
                             <input type="radio" id="radio-4" name="radio_margin_top" class="buttons_option_button_margin_top">
-                            <label class="fake_chekbox" for="radio-4"  @click="admin_margin_top = 50">
+                            <label class="fake_chekbox" for="radio-4"  @click="set_Item_localStore('post_margin_top', '150')">
 
                             </label>
                             <p class="value_of_button">
-                                50px
+                                150px
                             </p>
 
                         </div>
@@ -92,41 +92,41 @@
                     <div class="buttons_option">
                         <div class="button">
                             <input type="radio" id="0_radio-1" name="radio_margin_bottom" class="buttons_option_button_margin_top">
-                            <label  for="0_radio-1" class="fake_chekbox"  @click="admin_margin_bottom = 5" >
+                                <label  for="0_radio-1" class="fake_chekbox"  @click="set_Item_localStore('post_margin_buttom', '30')" >
 
                             </label>
                             <p class="value_of_button">
-                                5px
+                                30px
                             </p>
 
                         </div>
                         <div class="button">
                             <input type="radio"  id="0_radio-2"  name="radio_margin_bottom" class="buttons_option_button_margin_top">
-                            <label  for="0_radio-2" class="fake_chekbox"  @click="admin_margin_bottom = 25">
+                            <label  for="0_radio-2" class="fake_chekbox"  @click="set_Item_localStore('post_margin_buttom', '50')">
 
                             </label>
                             <p class="value_of_button">
-                                25px
+                                50px
                             </p>
 
                         </div>
                         <div class="button">
                             <input type="radio" id="0_radio-3" name="radio_margin_bottom" class="buttons_option_button_margin_top">
-                            <label class="fake_chekbox" for="0_radio-3"  @click="admin_margin_bottom = 35">
+                            <label class="fake_chekbox" for="0_radio-3" @click="set_Item_localStore('post_margin_buttom', '100')">
 
-                            </label>
+                     </label>
                             <p class="value_of_button">
-                                35px
+                                100px
                             </p>
 
                         </div>
                         <div class="button">
                             <input type="radio" id="0_radio-4" name="radio_margin_bottom" class="buttons_option_button_margin_top">
-                            <label class="fake_chekbox" for="0_radio-4"  @click="admin_margin_bottom = 50">
+                            <label class="fake_chekbox" for="0_radio-4"  @click="set_Item_localStore('post_margin_buttom', '150')">
 
                             </label>
                             <p class="value_of_button">
-                                50px
+                                150px
                             </p>
 
                         </div>
@@ -140,15 +140,21 @@
 
 <script>
 import post_component from "./components/post_component.vue"
+import {useStore} from "vuex";
+const store = useStore();
+
+
+
 export default {
 
     components : { post_component },
     data(){
+
         return {
+
                 count_of_posts : 0,
                 is_show_form_add_post: true,
-                admin_margin_top: 50,
-                admin_margin_bottom: 50,
+
 
 
                 is_content_choose: true,
@@ -170,6 +176,12 @@ export default {
             this.count_of_posts = this.count_of_posts + 1
             return this.count_of_posts
         },
+
+        set_Item_localStore(key, value){
+            window.localStorage.setItem(key, value)
+        }
+
+
 
 
 
@@ -223,9 +235,44 @@ html * {
 
 input[type="radio"]
 {
-
+    display: none;
     width: 30px;
     padding: 0 0 0 0px;
+}
+input[type="radio"]:checked + .fake_chekbox{
+    background-color: blue;
+}
+ .name_option{
+     font-size: 2em;
+ }
+.button{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.option{
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.fake_chekbox{
+    margin-bottom: 5px;
+    width: inherit;
+    min-height: 10px;
+    min-width: 30px;
+    border:  solid blue 1px;
+    border-radius: 80px;
+}
+
+.fake_chekbox:checked{
+    background-color: blue;
+}
+
+
+.buttons_option{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
@@ -315,46 +362,6 @@ input[type="radio"]
         flex-direction: row;
         justify-content: space-between;
         margin: 100px 0px;
-    }
-    .name_option{
-        font-size: 2em;
-        font-weight: 700;
-        margin-bottom: 10px;
-    }
-
-    .buttons_option{
-        //max-width: 700px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        width: inherit;
-    }
-    .button{
-        min-width: 32px;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 3px;
-
-    }
-
-    .value_of_button{
-        text-align:  center ;
-        tex: 0px;
-    }
-
-    .button input[type=radio] {
-        display: none;
-    }
-
-    .button input[type=radio]:checked + .fake_chekbox {
-        background-color: blue;
-    }
-    .fake_chekbox{
-        border: 1px solid blue;
-        height: 10px;
-        min-width: 45px;
-        border-radius: 80px;
-        user-select: none;
     }
 
 
